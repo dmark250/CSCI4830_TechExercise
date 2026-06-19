@@ -106,35 +106,40 @@ function App() {
     removedEntries.current.push(removedEntry);
   }
 
-
   return (
-    <div>
-      <div>
-        <h1>CSCI4830_TechExercise</h1>
-        <h2>Devin Mark</h2>
+    <div className='app'>
+      <div className='app-header'>
+        <a className='app-title' href='https://github.com/dmark250/CSCI4830_TechExercise'>CSCI4830_TechExercise</a>
+        <a className='app-author' href='https://github.com/dmark250'>Devin Mark</a>
+
       </div>
 
       {areYouSure[0] ? (
         <div className='are-you-sure' >
-          <h3>Are you sure?</h3>
-          <button onClick={areYouSureYes}>Yes!</button>
-          <button onClick={areYouSureNo}>No!</button>
+          <h3 className='are-you-sure-title'>Are you sure?</h3>
+          <button className='are-you-sure-yes' onClick={areYouSureYes} >Yes!</button>
+          <button className='are-you-sure-no' onClick={areYouSureNo} >No!</button>
         </div>
       ) : null}
 
       <div className='entries-options'>
-        <button onClick={addEntry}>Add Entry</button>
-        <button onClick={clearData}>Clear Entries</button>
-        <button onClick={loadData}>Load Entries</button>
-        <button onClick={saveData}>Save Entries</button>
+        <button className='add-entry-button' onClick={addEntry} >Add Entry</button>
+        <button className='clear-entries-button' onClick={clearData} >Clear Entries</button>
+        <button className='load-entries-button' onClick={loadData} >Load Entries</button>
+        <button className='save-entries-button' onClick={saveData} >Save Entries</button>
       </div>
 
       <div className='user-entries'>
-        {/* TODO: Add rendering for entries with buttons on each for changing the value. Should use the index in entries to change that one. Use editEntry() somehow? */}
-        {/* Also maybe a delete button on each one as well that would use removeEntry? */}
+        {entries.map((entry, index) => (
+          <div className='user-entry' key={entry.id ?? entry.time}>
+            <input className='entry-value' type='text' value={entry.value} onChange={(event) => editEntry(index, event.target.value)} />
+            <button className='remove-entry-button' onClick={() => removeEntry(index)} >Remove</button>
+          </div>
+        ))}
       </div>
 
     </div>
+
   )
 }
 
