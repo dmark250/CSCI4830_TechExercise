@@ -6,17 +6,9 @@ import { Entry } from './Entry.js'
 function App() {
   const [entries, setEntries] = useState([]);
   const [areYouSure, setAreYouSure] = useState([false]);
-  const newData = useRef(false);
+  const newData = useRef(true);
   const sure = useRef(false);
   const removedEntries = useRef([]);
-
-  useEffect(() => {
-    async function loadInitialEntries() {
-      setEntries(await loadEntriesDB());
-    }
-
-    loadInitialEntries();
-  }, []);
 
   async function areYouSureYes() {
     const callback = areYouSure[1];

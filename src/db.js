@@ -1,32 +1,41 @@
 import { Entry } from './Entry.js'
+import { Dexie } from 'dexie'
+
+export const db = new Dexie("techExerciseDB")
+db.version(1).stores({
+	entries: "++id, value, time", // id = pk, value & time = properties
+})
 
 
-export function loadEntriesDB() {
-	return [];
 
+export async function loadEntriesDB() {
+	const entriesArray = await db.entries.toArray()
 
-// TODO: Add DB Retrieving Entries Logic
+	const entries = []
+	for (const entry of entriesArray) {
+		entries.push(new Entry(entry.value, entry.time, entry.id));
+	}
 
+	return entries;
 }
 
-export function addEntryDB(entry) {
-	if (entry.id === null) {
+export async function addEntryDB(entry) {
+	if (entry.id != null) {
 		return null;
 	}
-	let id = "hello";
-// TODO: Add DB Adding Entry Logic
 
-	return id;
+	return await db.entries.add({ value: entry.value, time: entry.time });
 }
 
-export function updateEntryDB() {
+export async function updateEntryDB(entry) {
 
-	return false;
-
-	return true;
+	await db.entries.update(entry.id, {
+		value: entry.value,
+		time: entry.time
+	})
 
 }
 
-export function deleteEntryDB() {
-
+export async function deleteEntryDB(entry) {
+	await db.entries.delete(entry.id);
 }
