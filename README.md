@@ -1,16 +1,52 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# CSCI4830_TechExercise
 
-Currently, two official plugins are available:
+## Author(s)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+DMark
 
-## React Compiler
+## How to Install and Run the Program
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Requirements
 
-## Expanding the ESLint configuration
+- Node.js: https://nodejs.org
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Git: https://git-scm.com/install/windows
+
+
+### Download and Installation
+
+To download the repo, run this in a terminal:
+
+$ <code>git clone https://github.com/dmark250/CSCI4830_TechExercise.git</code>
+
+Navigate to that directory
+
+Then, install dependencies using npm by running this in the terminal:
+
+$ <code>npm install</code>
+
+### Running the Program
+
+To Start the server running locally on your machine, navigate to the project directory in a terminal and run:
+
+$ <code>npm run dev</code>
+
+Now to open the web page do one of the following
+
+1. Run in the same terminal:
+    $ <code>o</code>
+    This should open the web page in a browser.
+
+2. Control click the localhost address that is shown in the terminal. This should do the same as 1. 
+
+3. Navigate to the localhost address in a web browser.
+
+## Release Notes
+
+### 06/19/2026
+
+Basic React Project Created Using Vite and Dexie.
+
+Implemented a basic Entry tracker/editor. Entries can be Added, edited, deleted, and cleared. When entries have been finished being edited, they can be saved using Dexie and IndexedDB. Loading entries will overwrite all current entries. Both Clear and Load entries cause a popup ensuring you do not accidentally overwrite all data. The TechExercise text and Devin Mark texts are both links to the github repository and github repo of the author.
