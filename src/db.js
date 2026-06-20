@@ -9,7 +9,7 @@ db.version(1).stores({
 
 
 export async function loadEntriesDB() {
-	const entriesArray = await db.entries.toArray()
+	const entriesArray = await db.entries.orderBy('time').reverse().toArray()
 
 	const entries = []
 	for (const entry of entriesArray) {
